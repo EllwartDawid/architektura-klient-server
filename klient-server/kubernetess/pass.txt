@@ -1,0 +1,3 @@
+DB_PASSWORD=eyyf382+2Jfj
+DB_USER=user01
+DB_NAME=db
