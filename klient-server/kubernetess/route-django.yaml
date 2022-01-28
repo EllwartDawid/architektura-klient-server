@@ -1,0 +1,54 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: route-django
+  namespace: labproj35
+  uid: d6e13a37-1956-4c18-ae8d-756cd75a199d
+  resourceVersion: '80688753'
+  creationTimestamp: '2022-01-26T16:59:47Z'
+  annotations:
+    openshift.io/host.generated: 'true'
+  managedFields:
+    - manager: kubectl-expose
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2022-01-26T16:59:47Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:port':
+            .: {}
+            'f:targetPort': {}
+          'f:to':
+            'f:kind': {}
+            'f:name': {}
+            'f:weight': {}
+          'f:wildcardPolicy': {}
+    - manager: openshift-router
+      operation: Update
+      apiVersion: route.openshift.io/v1
+      time: '2022-01-26T16:59:47Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:ingress': {}
+      subresource: status
+spec:
+  host: route-django-labproj35.apps.ocp.lab.cloudpak.site
+  to:
+    kind: Service
+    name: svc-django
+    weight: 100
+  port:
+    targetPort: 8080
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: route-django-labproj35.apps.ocp.lab.cloudpak.site
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2022-01-26T16:59:47Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: router-default.apps.ocp.lab.cloudpak.site
